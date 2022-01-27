@@ -3,7 +3,7 @@ export default function Card(props) {
         <div 
             className={`card ${props.rotate ? 'rotate': ''}`}
             data-id={props.id} 
-            onClick={ () => props.actionRotate(props.id, props.fixed) } 
+            onClick={ () => props.actionRotate(props.id, props.pinUp) } 
             data-bind={props.bind}>
             <div className='card--inner'>
                 <div className='card--front middle'><i className="fas fa-question"></i></div>

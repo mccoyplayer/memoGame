@@ -9,7 +9,7 @@ export default function arrCardsRand(numCards){
       let random = Math.floor(Math.random() * numCards); // 0 -7
 
       if (!arr.some(item => item.id === random)) {
-        arr.push({ id: random, symbol: symbols[j], bind: j, rotate: false, validating: 0, fixed: 0 })
+        arr.push({ id: random, symbol: symbols[j], bind: j, rotate: false, validating: 0, pinUp: 0 })
         i++
         j++
       }

@@ -16,8 +16,8 @@ export default function GameScreen(props) {
   }, [props.numCards])
 
   // FUNCION: ROTAR
-  const rotate = (id, fixed) => {
-    if (fixed === 0) {
+  const rotate = (id, pinUp) => {
+    if (pinUp === 0) {
       setCardsArr(prevArr => {
         prevArr[id].rotate = true;
         prevArr[id].validating = 1;
@@ -48,9 +48,9 @@ export default function GameScreen(props) {
       // elementos iguales
       else {
         setCardsArr(prevArr => {
-          prevArr[validatingCards[0].id].fixed = 1;
+          prevArr[validatingCards[0].id].pinUp = 1;
           prevArr[validatingCards[0].id].validating = 0;
-          prevArr[validatingCards[1].id].fixed = 1;
+          prevArr[validatingCards[1].id].pinUp = 1;
           prevArr[validatingCards[1].id].validating = 0;
           return [...prevArr]
         })
@@ -58,8 +58,8 @@ export default function GameScreen(props) {
     }
 
     // verificamos que no haya elementos pendientes
-    const fixedCards = cardsArr.filter( card => card.fixed === 0).length
-    if(fixedCards === 0) {
+    const pinUpCards = cardsArr.filter( card => card.pinUp === 0).length
+    if(pinUpCards === 0) {
       props.setFinish(2)
     }
 
@@ -69,7 +69,7 @@ export default function GameScreen(props) {
     <div className='gamescreen'>
       <div className='gamescreen--score grid grid-2'>
         <div className='gamescreen--moves'>
-          <p>Moves: {moves}</p>
+          <p>Movements: {moves}</p>
         </div>
         <div className='gamescreen--time text-right'>
           <p>Time: {convertToTimer(props.time)}</p>
@@ -85,7 +85,7 @@ export default function GameScreen(props) {
                 id={card.id}
                 rotate={card.rotate}
                 symbol={card.symbol}
-                fixed={card.fixed}
+                pinUp={card.pinUp}
                 bind={card.bind}
                 actionRotate={rotate}
               />

@@ -42,7 +42,6 @@ function App() {
     if(intervalId) {
       clearInterval(intervalId);
       setIntervalId(0);
-      return;
     }
     
     const newIntervalId = setInterval( () =>{
